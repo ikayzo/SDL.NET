@@ -1,0 +1,10 @@
+bin\Release\SDL.dll
+bin\Release\SDL.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\SDL.dll
+obj\Release\SDL.pdb
+bin\Debug\SDL.dll
+bin\Debug\SDL.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SDL.dll
+obj\Debug\SDL.pdb

@@ -1,0 +1,138 @@
+/**
+ * Test all 13 literal types
+ *
+ * @author Daniel Leuck
+ */
+
+-- String Tests -----------------------------------
+
+string1 "hello"
+string2 "hi"
+string3 `aloha`
+# note: string4 and string5 should appear as one line with no new line chars
+string4 "hi \ 
+    there"
+string5 "hi \  		
+    there \
+    joe"
+string6 "line1\nline2"
+# note: new lines should be preserved for string7 and string8
+string7 `line1
+line2` # note: this is continued from the line above
+string8 `line1
+line2
+line3` -- note: the previous two lines are continued from "string8"
+string9 `Anything should go in this line without escapes \ \\ \n \t " "" ' ''`
+string10 "escapes \"\\\n\t"
+# unicode strings - if these don't display properly download a unicode font
+# such as Bitstream Cyberbit, Code2000
+# (http://home.att.net/~jameskass/code2000_page.htm), or MS Arial
+# Unicode (http://support.microsoft.com/default.aspx?scid=kb;en-us;287247) and
+# ensure your text editor supports UTF8 encoding
+japanese "日本語"
+korean "여보세요"
+russian "здравствулте"
+xml `
+<root type="widget">
+	<color red="255" green="0" blue="0"/>
+	<text>Hi there!</text>
+</root>
+`
+line_test `
+new line above and below
+`
+
+-- Character Tests -----------------------------------
+
+char1 'a'
+char2 'A'
+char3 '\\'
+char4 '\n'
+char5 '\t'
+char6 '\''
+char7 '"'
+char8 '日'
+char9 '여'
+char10 'з'
+
+-- Number Tests -----------------------------------
+
+int1 0
+int2 5
+int3 -100
+int4 234253532
+long1 0L
+long2 5l // note: this is 5 followed by a lower case L.
+long3 5L
+long4 3904857398753453453L
+float1 1.0F
+float2 .23F
+float3 -.34F
+double1 2.0
+double2 -0.234D
+double3 2.34d
+decimal1 0bd
+decimal2 11.111111bd
+decimal3 234535.3453453453454345345341242343BD
+
+-- Boolean Tests -----------------------------------
+
+light-on true
+light-off false
+
+light1 on
+light2 off
+
+-- Null Tests -----------------------------------
+
+nothing null
+
+-- Date Tests -----------------------------------
+
+date1 2005/12/31
+date2 1882/5/2
+date3 1882/05/02
+_way_back 582/09/16
+
+-- Time Span Tests -----------------------------------
+
+time1 12:30:00
+time2 24:00:00
+time3 1:00:00
+time4 1:0:0
+time5 12:30:2
+time6 12:30:23
+time7 12:30:23.1
+time8 12:30:23.12
+time9 12:30:23.123
+time10 34d:12:30:23.1
+time11 1d:12:30:0
+time12 5d:12:30:23.123
+time13 -12:30:23.123
+time14 -5d:12:30:23.123
+
+-- Date Time Tests -----------------------------------
+
+date_time1 2005/12/31 12:30
+date_time2 1882/5/2 12:30
+date_time3 2005/12/31 1:00
+date_time4 1882/5/2 1:00
+date_time5 2005/12/31 12:30:23.12
+date_time6 1882/5/2 12:30:23.123
+date_time7 1882/5/2 12:30:23.123-JST
+date_time8 985/04/11 12:30:23.123-PST
+
+-- Binary Tests -----------------------------------
+
+# bytes for UTF8 string "hi"
+hi [aGk=]
+// bytes for a small PNG image
+png [
+	iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAKnRFWHRDcmVhdGlvbiBUaW1l
+	AERpIDQgTXJ6IDIwMDMgMDA6MjQ6MDQgKzAxMDDdSQ6OAAAAB3RJTUUH0wMEAAcllPlrJgAA
+	AAlwSFlzAAAK8AAACvABQqw0mAAAAARnQU1BAACxjwv8YQUAAADQSURBVHjaY2CgEDCCyZn/
+	3YHkDhL1ejCkM+5kgXJ2zDQmXueShwwMh9+ALWSEGcCQfhZIvHlDnAk8PAwMHBxgJtyAa7bX
+	UdT8/cvA8Ps3hP7zB4FBYn/+vGbweqyJaoCmpiaKASDFv35BNMBoZMzwGKKOidJYoNgAuBdm
+	naXQgHRKDfgagxD89w8S+iAaFICwGIHFAgjrHUczAByySAaAMEgDLBphhv7/D8EYLgDZhAxA
+	mkAKYYbAMMwwDAOQXYDuDXRXgDC6AR7SW8jITNQAACjZgdj4VjlqAAAAAElFTkSuQmCC
+]

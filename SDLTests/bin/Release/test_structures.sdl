@@ -1,0 +1,151 @@
+/**
+ * Test structures including value lists, attribute lists,
+ * children, namespaces, etc.
+ *
+ * @author Daniel Leuck
+ */
+
+# test a tag with no values, attributes, or children
+empty_tag
+
+# test values (and comments)
+values1 "hi"
+values2 "hi" "ho"
+values3 1 "ho"
+values4 "hi" 5
+values5 1 2
+values6 1 2 3
+values7 null "foo" false 1980/12/5
+values8 null "foo" false 1980/12/5 12:30 `there` 15:23:12.234
+values9 null "foo" false 1980/12/5 12:30 `there` 1989/8/12 15:23:12.234-JST
+values10 null "foo" false 1980/12/5 12:30 `there` 15:23:12.234 \
+    "more stuff"
+values11 null "foo" false 1980/12/5 12:30 `there` 123d:15:23:12.234 \
+    "more \
+	stuff \
+	here"
+values12 1 /* 2 */ 3 # 4
+values13 1/* 2 */3 # 4
+values14 1/* 2 */3# 4
+values15 1 2 /* 3 */\
+    4 5 \
+	6 # more comments
+values16 1 2 /*
+    4 */ 5
+values17 1 2 /*
+
+    4 */ 5
+values18 1 2 /*
+    4  6
+	*/ 7
+values19 1 /* 2 */ 3 /* 4 */ 5/*6*/7
+values20 1 /* 2 */ 3 /* 4 */ 5/*6 7*/
+values21 1 /* 2 */ 3 /* 4 */ 5/*6 7
+    */
+values22 "hi""ho" "ho"5"hi"
+
+# test attributes (and comments)
+atts1 name="joe"
+atts2 size=5
+atts3 name="joe" size=5
+atts4 name="joe" size=5 smoker=false
+atts5 name="joe" /* size=5 */ smoker=false
+atts6 name="joe" /* size=5 */ \
+	smoker=false
+atts7 name="joe" /* size=5 */ # smoker=false
+atts8 name="joe" size=5 smoker=false text="hi\
+    " birthday=1972/05/23
+atts9 key=[bXlrZXk=]
+	
+# test values and attributes
+valatts1 "joe" size=5
+valatts2 "joe" size=5 #comment...
+valatts3 "joe" size=5#comment...
+valatts4 "joe" size=5 weight=160 hat="big"
+valatts5 "joe" `is a
+ nice guy` size=5 smoker=false
+valatts6 "joe" `is a
+ nice guy` size=5 house=`big and
+ blue`
+valatts7 "joe" `is a
+ nice guy` size=5 /* house=`big and
+ blue` */smoker=false
+valatts8 "joe" `is a
+ nice guy` size=5 /* random
+ text in comments
+ */ smoker=false
+valatts9 "joe" `is a
+ nice guy` size=5/* random
+ text in comments
+ */smoker=false
+ 
+# test tags with children
+parent {
+	son
+	daughter
+}
+
+grandparent {
+	child {
+		son
+		daughter
+	}
+	child {
+		son
+		daughter
+	}
+}
+
+grandparent2 name="Harold" age=93 {
+	child name="Harold II" age=60 smoker=false {
+		son name="Joe"
+		daughter name="Akiko" birthday=1976/04/18
+	}
+	child name="Jose" {
+		child name="child1"
+		child name="child2"
+		child name="child3"
+	}
+}
+
+-- Test tags with no names (content tags) --
+
+"hello"
+
+files {
+	"c:/file1.txt"
+	"c:/file2.txt"
+	"c:/folder" {
+		"c:/file3.txt"
+		"c:/file4.txt"	
+	}
+}
+
+matrix {
+	1	2	3
+	4	5	6
+}
+
+-----------------------------------------
+-- tests with namespaces, comments, etc.
+-----------------------------------------
+
+person:random_guy // nice guy
+person:grandparent3 name="Harold" age=93 {
+	person:child name="Sabrina" age=93 smoker=false { #comment here...
+		person:son name="Joe" -- a bit odd...
+		person:daughter public:name="Akiko" private:smokes=true \
+			public:birthday=1976/04/18
+		dog name="Spot"
+		/* cat name="Scratches" */
+	}
+	/*
+	person:drunk_uncle funny_drunk=false {
+		person:angry_daughter name="Jill"
+	}
+	*/
+	person:child name="Jose" {
+		person:son
+		person:daughter
+	}
+}
